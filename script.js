@@ -36,20 +36,33 @@ function mostrarDemuestra() {
     personaje.style.display = "block";
 
     // Variables de movimiento
-    let velocidad = 10;
-    let posX = window.innerWidth / 2 - 40; // Posición inicial en el centro
+    let velocidad = 5;
+    let posX = window.innerWidth / 2 - 40;
     let posY = window.innerHeight / 2 - 40;
+    let keys = {};
 
-    // Evento de teclado para mover el personaje
+    // Guardar las teclas presionadas
     document.addEventListener("keydown", function(event) {
-        if (event.key === "w" && posY > 0) posY -= velocidad;
-        if (event.key === "s" && posY < window.innerHeight - 80) posY += velocidad;
-        if (event.key === "a" && posX > 0) posX -= velocidad;
-        if (event.key === "d" && posX < window.innerWidth - 80) posX += velocidad;
+        keys[event.key] = true;
+    });
+
+    document.addEventListener("keyup", function(event) {
+        keys[event.key] = false;
+    });
+
+    function moverPersonaje() {
+        if (keys["w"] && posY > 0) posY -= velocidad;
+        if (keys["s"] && posY < window.innerHeight - 80) posY += velocidad;
+        if (keys["a"] && posX > 0) posX -= velocidad;
+        if (keys["d"] && posX < window.innerWidth - 80) posX += velocidad;
 
         personaje.style.top = posY + "px";
         personaje.style.left = posX + "px";
-    });
+
+        requestAnimationFrame(moverPersonaje);
+    }
+
+    moverPersonaje(); // Iniciar la animación de movimiento
 }
 
 function mostrarGifEnfado() {
