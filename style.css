@@ -97,7 +97,7 @@ img {
     transition: transform 3s ease-in-out;
 }
 
-/* Botón de volver */
+/* Botón de volver (Vuelve a intentarlo...) */
 #volver {
     position: fixed;
     bottom: 20px;
@@ -117,4 +117,3 @@ img {
 #volver:hover {
     transform: translateX(-50%) scale(1.1);
 }
-
