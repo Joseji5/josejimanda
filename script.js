@@ -51,7 +51,7 @@ function mostrarGifEnfado() {
 
     setTimeout(() => {
         let volverBtn = document.createElement("button");
-        volverBtn.innerText = "Vuelve a intentarlo";
+        volverBtn.innerText = "Vuelve a intentarlo...";
         volverBtn.id = "volver";
         volverBtn.addEventListener("click", function() {
             location.reload();
@@ -61,4 +61,3 @@ function mostrarGifEnfado() {
         volverBtn.style.display = "block";
     }, 4000);
 }
-
