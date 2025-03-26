@@ -1,25 +1,42 @@
 document.getElementById("btnSi").addEventListener("click", function() {
-    mostrarGif("beso.gif");
+    mostrarConfirmacion();
 });
 
 document.getElementById("btnNo").addEventListener("click", function() {
-    mostrarGif("enfado.gif");
+    mostrarGifEnfado();
 });
 
-function mostrarGif(gif) {
-    let gifContainer = document.getElementById("gifContainer");
-    gifContainer.innerHTML = `<img src="${gif}" id="gif">`;
-    gifContainer.style.display = "block";
+function mostrarConfirmacion() {
+    let container = document.querySelector(".container");
+    container.innerHTML = `
+        <h1 class="titulo">¿Estás seguro?</h1>
+        <div class="botones">
+            <button id="btnSiConfirm" class="boton">Sí</button>
+            <button id="btnNoConfirm" class="boton">No</button>
+        </div>
+    `;
 
-    let gifElement = document.getElementById("gif");
+    document.getElementById("btnSiConfirm").addEventListener("click", function() {
+        document.querySelector(".titulo").innerText = "Demuéstralo";
+    });
 
-    setTimeout(() => {
-        gifElement.classList.add("ampliado"); // Se agranda más
-    }, 100);
+    document.getElementById("btnNoConfirm").addEventListener("click", function() {
+        mostrarGifEnfado();
+    });
+}
+
+function mostrarGifEnfado() {
+    let container = document.querySelector(".container");
+    container.innerHTML = `
+        <h1 class="titulo">No tienes ni idea...</h1>
+        <div id="gifContainer">
+            <img src="enfado.gif" id="gif" class="ampliado">
+        </div>
+    `;
 
     setTimeout(() => {
         let volverBtn = document.createElement("button");
-        volverBtn.innerText = "Volver";
+        volverBtn.innerText = "Vuelve a intentarlo";
         volverBtn.id = "volver";
         volverBtn.addEventListener("click", function() {
             location.reload();
