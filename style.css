@@ -90,15 +90,24 @@ body {
     position: relative;
 }
 
+/* Tamaño inicial de la imagen */
 img {
-    width: 120px;
-    transition: transform 3s;
+    width: 150px;
+    transition: transform 3s ease-in-out;
 }
 
-/* Botón de volver */
+/* Hacer que el GIF se haga mucho más grande */
+.ampliado {
+    transform: scale(5);
+}
+
+/* Estilos para el botón de volver en el centro del GIF */
 #volver {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     display: none;
-    margin-top: 20px;
     padding: 12px 25px;
     font-size: 18px;
     background-color: blue;
@@ -110,5 +119,6 @@ img {
 }
 
 #volver:hover {
-    transform: scale(1.1);
+    transform: translate(-50%, -50%) scale(1.1);
 }
+
