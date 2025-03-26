@@ -43,13 +43,14 @@ body {
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-/* Estilos de los botones */
+/* Contenedor de botones */
 .botones {
     display: flex;
     justify-content: center;
     gap: 20px;
 }
 
+/* Estilo de botones */
 .boton {
     padding: 12px 30px;
     font-size: 22px;
@@ -73,7 +74,7 @@ body {
     box-shadow: 0 4px 10px rgba(220, 53, 69, 0.5);
 }
 
-/* Efecto de brillo en los botones */
+/* Efecto de brillo */
 .boton:hover {
     transform: scale(1.1);
 }
@@ -84,28 +85,28 @@ body {
     to { opacity: 0.6; }
 }
 
-/* Contenedor del GIF */
+/* Contenedor de mensajes y GIF */
 #gifContainer {
     margin-top: 20px;
     display: none;
     position: relative;
 }
 
-/* Tamaño inicial de la imagen */
+/* Imagen del GIF */
 img {
     width: 150px;
     transition: transform 3s ease-in-out;
 }
 
-/* Hacer que el GIF se haga mucho más grande */
+/* Hacer que el GIF se haga más grande */
 .ampliado {
     transform: scale(5);
 }
 
-/* Estilos para el botón de volver */
+/* Botón de volver */
 #volver {
     position: fixed;
-    bottom: 20px;  /* Lo pone justo en el centro abajo */
+    bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
     display: none;
