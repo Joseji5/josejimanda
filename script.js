@@ -17,11 +17,23 @@ function mostrarConfirmacion() {
     `;
 
     document.getElementById("btnSiConfirm").addEventListener("click", function() {
-        document.querySelector(".titulo").innerText = "Demuéstralo";
+        mostrarDemuestra();
     });
 
     document.getElementById("btnNoConfirm").addEventListener("click", function() {
         mostrarGifEnfado();
+    });
+}
+
+function mostrarDemuestra() {
+    let container = document.querySelector(".container");
+    container.innerHTML = `
+        <h1 class="titulo">Demuéstralo</h1>
+        <button id="btnVale" class="boton">Vale</button>
+    `;
+
+    document.getElementById("btnVale").addEventListener("click", function() {
+        alert("¡Ahora depende de ti demostrarlo! 💖");
     });
 }
 
@@ -38,13 +50,15 @@ function mostrarGifEnfado() {
     gifContainer.style.display = "block";
 
     setTimeout(() => {
-        let valeBtn = document.createElement("button");
-        valeBtn.innerText = "VALE";
-        valeBtn.id = "vale";
-        valeBtn.addEventListener("click", function() {
+        let volverBtn = document.createElement("button");
+        volverBtn.innerText = "Vuelve a intentarlo";
+        volverBtn.id = "volver";
+        volverBtn.addEventListener("click", function() {
             location.reload();
         });
 
-        container.appendChild(valeBtn);
-    }, 2000);
+        document.body.appendChild(volverBtn);
+        volverBtn.style.display = "block";
+    }, 4000);
 }
+
