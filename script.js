@@ -9,7 +9,7 @@ document.getElementById("btnNo").addEventListener("click", function() {
 function mostrarConfirmacion() {
     let container = document.querySelector(".container");
     container.innerHTML = `
-        <h1 class="titulo">¿Estás segura?</h1>
+        <h1 class="titulo">¿Estás seguro?</h1>
         <div class="botones">
             <button id="btnSiConfirm" class="boton">Sí</button>
             <button id="btnNoConfirm" class="boton">No</button>
@@ -35,36 +35,43 @@ function mostrarDemuestra() {
     document.body.appendChild(personaje);
     personaje.style.display = "block";
 
-    let velocidad = 5;
-    let destinoX = personaje.offsetLeft;
-    let destinoY = personaje.offsetTop;
-    let moviendo = false;
+    // Variables de movimiento
+    let velocidad = 5;  // Aumentamos la velocidad
+    let posX = window.innerWidth / 2 - 40;
+    let posY = window.innerHeight / 2 - 40;
+    let movX = 0;
+    let movY = 0;
 
-    // Detectar clic para mover el personaje
-    document.addEventListener("click", function(event) {
-        destinoX = event.clientX - personaje.width / 2;
-        destinoY = event.clientY - personaje.height / 2;
-        moviendo = true;
+    // Guardar las teclas presionadas y soltar cuando se dejan de presionar
+    document.addEventListener("keydown", function(event) {
+        if (event.key === "w") movY = -velocidad;
+        if (event.key === "s") movY = velocidad;
+        if (event.key === "a") movX = -velocidad;
+        if (event.key === "d") movX = velocidad;
+    });
+
+    document.addEventListener("keyup", function(event) {
+        if (event.key === "w" || event.key === "s") movY = 0;
+        if (event.key === "a" || event.key === "d") movX = 0;
     });
 
     function moverPersonaje() {
-        if (moviendo) {
-            let dx = destinoX - personaje.offsetLeft;
-            let dy = destinoY - personaje.offsetTop;
-            let distancia = Math.sqrt(dx * dx + dy * dy);
+        posX += movX;
+        posY += movY;
 
-            if (distancia > 2) { // Sigue moviéndose si no ha llegado al punto exacto
-                let angulo = Math.atan2(dy, dx);
-                personaje.style.left = personaje.offsetLeft + Math.cos(angulo) * velocidad + "px";
-                personaje.style.top = personaje.offsetTop + Math.sin(angulo) * velocidad + "px";
-            } else {
-                moviendo = false; // Detener el movimiento al llegar
-            }
-        }
+        // Limites de pantalla
+        if (posX < 0) posX = 0;
+        if (posX > window.innerWidth - 80) posX = window.innerWidth - 80;
+        if (posY < 0) posY = 0;
+        if (posY > window.innerHeight - 80) posY = window.innerHeight - 80;
+
+        personaje.style.top = posY + "px";
+        personaje.style.left = posX + "px";
+
         requestAnimationFrame(moverPersonaje);
     }
 
-    moverPersonaje(); // Iniciar animación de movimiento
+    moverPersonaje(); // Iniciar la animación de movimiento
 }
 
 function mostrarGifEnfado() {
