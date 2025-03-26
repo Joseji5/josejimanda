@@ -26,6 +26,7 @@ body {
     border-radius: 20px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
     animation: aparecer 1s ease-in-out;
+    max-width: 80%;
 }
 
 /* Animación de aparición */
@@ -61,15 +62,14 @@ body {
     transition: 0.3s;
     color: white;
     text-transform: uppercase;
-    animation: parpadeo 1.5s infinite alternate;
 }
 
-#btnSi {
+#btnSi, #btnSiConfirm {
     background: #28a745;
     box-shadow: 0 4px 10px rgba(40, 167, 69, 0.5);
 }
 
-#btnNo {
+#btnNo, #btnNoConfirm {
     background: #dc3545;
     box-shadow: 0 4px 10px rgba(220, 53, 69, 0.5);
 }
@@ -77,12 +77,6 @@ body {
 /* Efecto de brillo */
 .boton:hover {
     transform: scale(1.1);
-}
-
-/* Animación de parpadeo */
-@keyframes parpadeo {
-    from { opacity: 1; }
-    to { opacity: 0.6; }
 }
 
 /* Contenedor de mensajes y GIF */
@@ -100,7 +94,7 @@ img {
 
 /* Hacer que el GIF se haga más grande */
 .ampliado {
-    transform: scale(5);
+    transform: scale(4);
 }
 
 /* Botón de volver */
