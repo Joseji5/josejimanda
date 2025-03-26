@@ -10,6 +10,7 @@ body {
     background-size: 400% 400%;
     animation: fondoAnimado 8s infinite alternate;
     text-align: center;
+    flex-direction: column;
 }
 
 /* Animación del fondo */
@@ -101,12 +102,12 @@ img {
     transform: scale(5);
 }
 
-/* Estilos para el botón de volver en el centro del GIF */
+/* Estilos para el botón de volver */
 #volver {
-    position: absolute;
-    top: 50%;
+    position: fixed;
+    bottom: 20px;  /* Lo pone justo en el centro abajo */
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
     display: none;
     padding: 12px 25px;
     font-size: 18px;
@@ -119,6 +120,5 @@ img {
 }
 
 #volver:hover {
-    transform: translate(-50%, -50%) scale(1.1);
+    transform: translateX(-50%) scale(1.1);
 }
-
