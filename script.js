@@ -36,25 +36,34 @@ function mostrarDemuestra() {
     personaje.style.display = "block";
 
     // Variables de movimiento
-    let velocidad = 5;
+    let velocidad = 2;
     let posX = window.innerWidth / 2 - 40;
     let posY = window.innerHeight / 2 - 40;
-    let keys = {};
+    let movX = 0;
+    let movY = 0;
 
-    // Guardar las teclas presionadas
+    // Guardar las teclas presionadas y soltar cuando se dejan de presionar
     document.addEventListener("keydown", function(event) {
-        keys[event.key] = true;
+        if (event.key === "w") movY = -velocidad;
+        if (event.key === "s") movY = velocidad;
+        if (event.key === "a") movX = -velocidad;
+        if (event.key === "d") movX = velocidad;
     });
 
     document.addEventListener("keyup", function(event) {
-        keys[event.key] = false;
+        if (event.key === "w" || event.key === "s") movY = 0;
+        if (event.key === "a" || event.key === "d") movX = 0;
     });
 
     function moverPersonaje() {
-        if (keys["w"] && posY > 0) posY -= velocidad;
-        if (keys["s"] && posY < window.innerHeight - 80) posY += velocidad;
-        if (keys["a"] && posX > 0) posX -= velocidad;
-        if (keys["d"] && posX < window.innerWidth - 80) posX += velocidad;
+        posX += movX;
+        posY += movY;
+
+        // Limites de pantalla
+        if (posX < 0) posX = 0;
+        if (posX > window.innerWidth - 80) posX = window.innerWidth - 80;
+        if (posY < 0) posY = 0;
+        if (posY > window.innerHeight - 80) posY = window.innerHeight - 80;
 
         personaje.style.top = posY + "px";
         personaje.style.left = posX + "px";
