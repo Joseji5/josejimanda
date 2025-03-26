@@ -26,14 +26,29 @@ function mostrarConfirmacion() {
 }
 
 function mostrarDemuestra() {
-    let container = document.querySelector(".container");
-    container.innerHTML = `
-        <h1 class="titulo">Demuéstralo</h1>
-        <button id="btnAllaVoy" class="boton">Allá voy</button>
-    `;
+    document.body.innerHTML = ""; // Limpia la pantalla
 
-    document.getElementById("btnAllaVoy").addEventListener("click", function() {
-        alert("¡Ahora depende de ti demostrarlo! 💖");
+    // Crear el personaje
+    let personaje = document.createElement("img");
+    personaje.src = "olaya.png";
+    personaje.id = "personaje";
+    document.body.appendChild(personaje);
+    personaje.style.display = "block";
+
+    // Variables de movimiento
+    let velocidad = 10;
+    let posX = window.innerWidth / 2 - 40; // Posición inicial en el centro
+    let posY = window.innerHeight / 2 - 40;
+
+    // Evento de teclado para mover el personaje
+    document.addEventListener("keydown", function(event) {
+        if (event.key === "w" && posY > 0) posY -= velocidad;
+        if (event.key === "s" && posY < window.innerHeight - 80) posY += velocidad;
+        if (event.key === "a" && posX > 0) posX -= velocidad;
+        if (event.key === "d" && posX < window.innerWidth - 80) posX += velocidad;
+
+        personaje.style.top = posY + "px";
+        personaje.style.left = posX + "px";
     });
 }
 
