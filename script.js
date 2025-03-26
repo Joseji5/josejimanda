@@ -29,10 +29,10 @@ function mostrarDemuestra() {
     let container = document.querySelector(".container");
     container.innerHTML = `
         <h1 class="titulo">Demuéstralo</h1>
-        <button id="btnVale" class="boton">Vale</button>
+        <button id="btnAllaVoy" class="boton">Allá voy</button>
     `;
 
-    document.getElementById("btnVale").addEventListener("click", function() {
+    document.getElementById("btnAllaVoy").addEventListener("click", function() {
         alert("¡Ahora depende de ti demostrarlo! 💖");
     });
 }
