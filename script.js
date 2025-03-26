@@ -25,7 +25,7 @@ function mostrarGif(gif) {
             location.reload();
         });
 
-        gifContainer.appendChild(volverBtn);
+        document.body.appendChild(volverBtn);
         volverBtn.style.display = "block";
     }, 4000);
 }
