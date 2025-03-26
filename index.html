@@ -3,10 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Primera Página</title>
+    <title>¿Olaya me quieres?</title>
+    <style>
+        /* Fondo bonito estilo videojuego */
+        body {
+            background: url('https://i.pinimg.com/originals/92/7b/02/927b02b47d68409f9ed872a07fc13a9a.gif') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        /* Estilo del contenedor central */
+        .container {
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.6);  /* Fondo semitransparente */
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        button {
+            font-size: 1.5em;
+            padding: 15px 30px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .emoji {
+            margin-top: 20px;
+            font-size: 5em;
+        }
+
+        .emoji img {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
 </head>
 <body>
-    <h1>¡Hola, Mundo!</h1>
-    <p>Bienvenido a mi primera página web alojada en GitHub Pages.</p>
+    <div class="container">
+        <h1>¿Olaya me quieres?</h1>
+        <button onclick="responder('si')">Sí</button>
+        <button onclick="responder('no')">No</button>
+        <div id="emoji" class="emoji"></div>
+    </div>
+
+    <script>
+        function responder(respuesta) {
+            const emojiDiv = document.getElementById('emoji');
+
+            if (respuesta === 'si') {
+                emojiDiv.innerHTML = '<img src="https://cdn4.iconfinder.com/data/icons/emoji-1-1/64/48_-_kiss-emoji-512.png" alt="Emoji con beso">';
+            } else if (respuesta === 'no') {
+                emojiDiv.innerHTML = '<img src="https://cdn4.iconfinder.com/data/icons/emoji-1-1/64/39_-_crying-emoji-512.png" alt="Emoji llorando">';
+            }
+        }
+    </script>
 </body>
 </html>
