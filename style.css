@@ -1,4 +1,4 @@
-/* Fondo con degradado animado */
+/* Fondo con imagen en lugar de color rosa */
 body {
     font-family: 'Arial', sans-serif;
     height: 100vh;
@@ -7,22 +7,15 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(45deg, #ff758c, #ff7eb3, #fd91c3);
-    background-size: 400% 400%;
-    animation: fondoAnimado 8s infinite alternate;
+    background: url('fondo.png') no-repeat center center fixed;
+    background-size: cover;
     text-align: center;
     position: relative;
 }
 
-/* Animación del fondo */
-@keyframes fondoAnimado {
-    0% { background-position: 0% 50%; }
-    100% { background-position: 100% 50%; }
-}
-
 /* Caja principal */
 .container {
-    background: white;
+    background: rgba(255, 255, 255, 0.8); /* Fondo blanco semitransparente */
     padding: 30px;
     border-radius: 20px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
@@ -129,3 +122,4 @@ img {
     transform: translate(-50%, -50%);
     display: none;
 }
+
