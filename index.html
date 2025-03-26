@@ -3,47 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>¿Olaya me quieres?</title>
-    <style>
-        /* Estilo básico */
-        body {
-            background-color: #f0f0f0;
-            font-family: 'Arial', sans-serif;
-            text-align: center;
-            margin-top: 50px;
-        }
-
-        button {
-            padding: 10px 20px;
-            font-size: 1.5em;
-            margin: 20px;
-            cursor: pointer;
-        }
-
-        #gif {
-            margin-top: 30px;
-        }
-    </style>
+    <title>¿Me quieres?</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>¿Olaya me quieres?</h1>
-    <button onclick="mostrarGif('si')">Sí</button>
-    <button onclick="mostrarGif('no')">No</button>
-
-    <div id="gif"></div>
-
-    <script>
-        function mostrarGif(respuesta) {
-            const gifDiv = document.getElementById('gif');
-            if (respuesta === 'si') {
-                gifDiv.innerHTML = '<img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExcjUxbmpnYWwza2t4MWZwM2RxZTR1MmY2dTh0bnJqb3IzZ2RsbjF5MCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/MDJ9IbxxvDUQM/giphy.gif" alt="GIF de sí">';
-            } else if (respuesta === 'no') {
-                gifDiv.innerHTML = '<img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExb2tobGNteHNyNHk0OTF3ejd4cmE0OWFxbTdrYm5yNmhnajU0YW92MiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/mlvseq9yvZhba/giphy.gif" alt="GIF de no">';
-            }
-        }
-    </script>
-</body>
-</html>
-
+    <div class="container">
+        <h1>Hola Olaya, soy Jose, ¿Tú me quieres?</h1>
+        <div class="botones">
+            <button id="btnSi">Sí</button>
+            <button id="btnNo">No</button>
+        </div>
+        <div id="gifContainer"></div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
