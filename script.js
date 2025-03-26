@@ -36,7 +36,7 @@ function mostrarDemuestra() {
     personaje.style.display = "block";
 
     // Variables de movimiento
-    let velocidad = 10;  // Ahora es más rápido
+    let velocidad = 6.5;  // Ahora es más rápido
     let posX = window.innerWidth / 2 - 40;
     let posY = window.innerHeight / 2 - 40;
     let movX = 0;
