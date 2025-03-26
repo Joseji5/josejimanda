@@ -34,6 +34,9 @@ function mostrarGifEnfado() {
         </div>
     `;
 
+    let gifContainer = document.getElementById("gifContainer");
+    gifContainer.style.display = "block";
+
     setTimeout(() => {
         let volverBtn = document.createElement("button");
         volverBtn.innerText = "Vuelve a intentarlo";
@@ -46,3 +49,4 @@ function mostrarGifEnfado() {
         volverBtn.style.display = "block";
     }, 4000);
 }
+
