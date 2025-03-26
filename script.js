@@ -12,8 +12,9 @@ function mostrarGif(gif) {
     gifContainer.style.display = "block";
 
     let gifElement = document.getElementById("gif");
+
     setTimeout(() => {
-        gifElement.style.transform = "scale(3)";
+        gifElement.classList.add("ampliado"); // Se agranda más
     }, 100);
 
     setTimeout(() => {
@@ -23,6 +24,7 @@ function mostrarGif(gif) {
         volverBtn.addEventListener("click", function() {
             location.reload();
         });
+
         gifContainer.appendChild(volverBtn);
         volverBtn.style.display = "block";
     }, 4000);
