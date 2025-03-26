@@ -30,7 +30,7 @@ function mostrarGifEnfado() {
     container.innerHTML = `
         <h1 class="titulo">No tienes ni idea...</h1>
         <div id="gifContainer">
-            <img src="enfado.gif" id="gif" class="ampliado">
+            <img src="enfado.gif" id="gif">
         </div>
     `;
 
@@ -38,15 +38,13 @@ function mostrarGifEnfado() {
     gifContainer.style.display = "block";
 
     setTimeout(() => {
-        let volverBtn = document.createElement("button");
-        volverBtn.innerText = "Vuelve a intentarlo";
-        volverBtn.id = "volver";
-        volverBtn.addEventListener("click", function() {
+        let valeBtn = document.createElement("button");
+        valeBtn.innerText = "VALE";
+        valeBtn.id = "vale";
+        valeBtn.addEventListener("click", function() {
             location.reload();
         });
 
-        document.body.appendChild(volverBtn);
-        volverBtn.style.display = "block";
-    }, 4000);
+        container.appendChild(valeBtn);
+    }, 2000);
 }
-
