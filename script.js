@@ -1,100 +1,125 @@
-document.getElementById("btnSi").addEventListener("click", function() {
-    mostrarConfirmacion();
-});
-
-document.getElementById("btnNo").addEventListener("click", function() {
-    mostrarGifEnfado();
-});
-
-function mostrarConfirmacion() {
-    let container = document.querySelector(".container");
-    container.innerHTML = `
-        <h1 class="titulo">¿Estás seguro?</h1>
-        <div class="botones">
-            <button id="btnSiConfirm" class="boton">Sí</button>
-            <button id="btnNoConfirm" class="boton">No</button>
-        </div>
-    `;
-
-    document.getElementById("btnSiConfirm").addEventListener("click", function() {
-        mostrarDemuestra();
-    });
-
-    document.getElementById("btnNoConfirm").addEventListener("click", function() {
-        mostrarGifEnfado();
-    });
+/* Fondo con imagen en lugar de color rosa */
+body {
+    font-family: 'Arial', sans-serif;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('fondo.png') no-repeat center center fixed;
+    background-size: cover;
+    text-align: center;
+    position: relative;
 }
 
-function mostrarDemuestra() {
-    document.body.innerHTML = ""; // Limpia la pantalla
-
-    // Crear el personaje
-    let personaje = document.createElement("img");
-    personaje.src = "olaya.png";
-    personaje.id = "personaje";
-    document.body.appendChild(personaje);
-    personaje.style.display = "block";
-
-    // Variables de movimiento
-    let velocidad = 6.5;  // Ahora es más rápido
-    let posX = window.innerWidth / 2 - 40;
-    let posY = window.innerHeight / 2 - 40;
-    let movX = 0;
-    let movY = 0;
-
-    // Guardar las teclas presionadas y soltar cuando se dejan de presionar
-    document.addEventListener("keydown", function(event) {
-        if (event.key === "w") movY = -velocidad;
-        if (event.key === "s") movY = velocidad;
-        if (event.key === "a") movX = -velocidad;
-        if (event.key === "d") movX = velocidad;
-    });
-
-    document.addEventListener("keyup", function(event) {
-        if (event.key === "w" || event.key === "s") movY = 0;
-        if (event.key === "a" || event.key === "d") movX = 0;
-    });
-
-    function moverPersonaje() {
-        posX += movX;
-        posY += movY;
-
-        // Limites de pantalla
-        if (posX < 0) posX = 0;
-        if (posX > window.innerWidth - 80) posX = window.innerWidth - 80;
-        if (posY < 0) posY = 0;
-        if (posY > window.innerHeight - 80) posY = window.innerHeight - 80;
-
-        personaje.style.top = posY + "px";
-        personaje.style.left = posX + "px";
-
-        requestAnimationFrame(moverPersonaje);
-    }
-
-    moverPersonaje(); // Iniciar la animación de movimiento
+/* Caja principal */
+.container {
+    background: rgba(255, 255, 255, 0.8); /* Fondo blanco semitransparente */
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    animation: aparecer 1s ease-in-out;
+    max-width: 80%;
 }
 
-function mostrarGifEnfado() {
-    let container = document.querySelector(".container");
-    container.innerHTML = `
-        <h1 class="titulo">No tienes ni idea...</h1>
-        <div id="gifContainer">
-            <img src="enfado.gif" id="gif">
-        </div>
-    `;
-
-    let gifContainer = document.getElementById("gifContainer");
-    gifContainer.style.display = "block";
-
-    setTimeout(() => {
-        let volverBtn = document.createElement("button");
-        volverBtn.innerText = "Vuelve a intentarlo...";
-        volverBtn.id = "volver";
-        volverBtn.addEventListener("click", function() {
-            location.reload();
-        });
-
-        document.body.appendChild(volverBtn);
-        volverBtn.style.display = "block";
-    }, 4000);
+/* Animación de aparición */
+@keyframes aparecer {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
+
+/* Texto principal */
+.titulo {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Contenedor de botones */
+.botones {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Estilo de botones */
+.boton {
+    padding: 12px 30px;
+    font-size: 22px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    color: white;
+    text-transform: uppercase;
+}
+
+#btnSi, #btnSiConfirm {
+    background: #28a745;
+    box-shadow: 0 4px 10px rgba(40, 167, 69, 0.5);
+}
+
+#btnNo, #btnNoConfirm {
+    background: #dc3545;
+    box-shadow: 0 4px 10px rgba(220, 53, 69, 0.5);
+}
+
+#btnAllaVoy {
+    background: #007bff;
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.5);
+}
+
+/* Efecto de brillo */
+.boton:hover {
+    transform: scale(1.1);
+}
+
+/* Contenedor del mensaje y GIF */
+#gifContainer {
+    margin-top: 20px;
+    display: none;
+    position: relative;
+}
+
+/* Imagen del GIF */
+img {
+    width: 120px;
+    transition: transform 3s ease-in-out;
+}
+
+/* Botón de volver (Vuelve a intentarlo...) */
+#volver {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
+    padding: 12px 25px;
+    font-size: 18px;
+    background-color: blue;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+#volver:hover {
+    transform: translateX(-50%) scale(1.1);
+}
+
+/* Estilos del personaje */
+#personaje {
+    width: 80px;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
